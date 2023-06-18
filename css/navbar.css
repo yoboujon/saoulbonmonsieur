@@ -1,0 +1,14 @@
+#navbar_component {
+    align-items: center;
+    display: flex;
+    height: 5rem;
+    padding: 0 5rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #f5a122;
+}
+
+#navbar_padding{
+    padding: 2.5rem;
+}
