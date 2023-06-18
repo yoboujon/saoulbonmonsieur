@@ -5,7 +5,17 @@
   scroll-behavior: smooth;
 }
 
-.test {
-    width: 15%;
-    height: 15%;
+.presentation {
+  overflow: visible;
+  width: 100%;
+  height: 100%;
+}
+
+.photosaoul {
+    width: 30%;
+    height: 30%;
+    float: right;
+    z-index:10;
+    rotate: 0deg;
+    margin-right: -30rem;
   }

@@ -7,6 +7,7 @@
     top: 0;
     width: 100%;
     background-color: #f5a122;
+    z-index:0;
 }
 
 #navbar_padding{

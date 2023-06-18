@@ -1,10 +1,10 @@
-var carreAnim = anime({
-    targets: '.test',
+var saoulAnimation = anime({
+    targets: '.photosaoul',
     autoplay: false,
-    translateX: 250,
+    rotate: -30,
+    translateX: -380,
 });
 
 function superAnim() {
-    carreAnim.restart();
-    carreAnim.anime();
+    saoulAnimation.restart();
 }

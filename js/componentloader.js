@@ -12,5 +12,5 @@ function load(url, element) {
 }
 
 window.addEventListener('load', function () {
-    load("../components/navbar.html", document.getElementById("navbar"));
+    load("../components/navbar.html", document.getElementsByTagName("Navbar")[0]);
 })
