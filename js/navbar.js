@@ -10,6 +10,12 @@ var dropdownList = document.getElementById("navbar_text-container").children[0].
 var aTagList = getNavbarTextContainer();
 //a list
 var dropdownStatus = Array(aTagList.length).fill(false);
+//list of dropdown links
+var dropdownLinks = ["droits/penal.html","droits/affaire.html","join/contact.html","join/coordonees.html"];
+//list of container links
+var containerLinks = ["avocat"];
+//navbarDropdown Element
+var navbarDropdown = document.getElementsByClassName("navbar_dropdown");
 
 /****************************************/
 /*                 animjs               */
@@ -69,7 +75,7 @@ function getNavbarTextContainer() {
  */
 function resetNavbar() {
     //For each dropdown found with the given classname, will set the display to none
-    for (dropdownClass of document.getElementsByClassName("navbar_dropdown")) {
+    for (dropdownClass of navbarDropdown) {
         dropdownClass.style.display = "none";
     }
 }
@@ -77,6 +83,28 @@ function resetNavbar() {
 /****************************************/
 /*                 main                 */
 /****************************************/
+
+//Setting the href links for in directory links
+var dropdownCount = 0;
+for(var dropdown of navbarDropdown)
+{
+    for(var aTagDropdown of dropdown.children)
+    {
+        aTagDropdown.href = concatPath(getSlashNum(window.location.pathname)-1,dropdownLinks[dropdownCount]);
+        dropdownCount++;
+    }
+}
+dropdownCount = 0;
+for(var aTag of aTagList)
+{
+    console.log(aTag);
+    if(!(aTag.href.includes("#0")))
+    {
+        console.log(aTag);
+        aTag.href = concatPath(getSlashNum(window.location.pathname)-1,containerLinks[dropdownCount]);
+        dropdownCount++;
+    }
+}
 
 //Mouse enter for the logo
 document.getElementById("navbar_logo-container").addEventListener("mouseenter", function () {
@@ -125,7 +153,7 @@ for (var dropdownElement of dropdownList) {
 window.addEventListener('click', function (e) {
     //clickState is set to 1 if the click is done outside any dropdownElement or the dropdown itself
     var clickState = false;
-    for (dropdownClass of document.getElementsByClassName("navbar_dropdown")) {
+    for (dropdownClass of navbarDropdown) {
         clickState |= dropdownClass.contains(e.target);
     }
     for (aTag of aTagList) {

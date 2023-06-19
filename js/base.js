@@ -46,10 +46,40 @@ function ready(callback) {
     });
 }
 
+/**
+ * Parse each character of the given string.
+ * @param {string} string 
+ * @returns number of '/' in the string
+ */
+function getSlashNum(string) {
+    var returnValue = 0;
+    for (char of string) {
+        if (char == "/") {
+            returnValue++;
+        }
+    }
+    return returnValue;
+}
+
+/**
+ * Will contenate a string of slash (num of parent dir) onto a given path
+ * @param {Int, number of slashes} slashNum 
+ * @param {Concat String} basePath 
+ * @returns the concatened string
+ */
+function concatPath(slashNum, basePath)
+{
+    var slashString = "";
+    for (let i = 0; i < slashNum; i++) {
+        slashString += "../";
+    }
+    return slashString+basePath;
+}
+
 /****************************************/
 /*                 main                 */
 /****************************************/
 
 window.addEventListener('load', function () {
-    load("../components/navbar.html", document.getElementsByTagName("Navbar")[0],"js/navbar.js", this.document.getElementsByTagName("head")[0]);
+    load("../components/navbar.html", document.getElementsByTagName("Navbar")[0], concatPath(getSlashNum(window.location.pathname)-1,"js/navbar.js"), this.document.getElementsByTagName("head")[0]);
 })
