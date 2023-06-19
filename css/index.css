@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+h1 {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+p {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.anim-text {
+  display: none;
+  opacity: 0;
+}
+
+.presentation {
+  overflow: hidden;
+  width: 100%;
+  height: 30rem;
+  display: flex;
+  background-image: url("../assets/cabinet-avocats-900x601.jpeg");
+  background-position-y: 100%;
+  background-size: cover;
+  position: relative;
+}
+
+.presentation-text {
+  width: 100%;
+  margin: 14rem 2rem;
+  padding: 0 0 0 2rem;
+  z-index: 1;
+  font-size: larger;
+}
+
+.presentation-img {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.photosaoul {
+  max-width: inherit;
+  height: inherit;
+  float: right;
+  display: none;
+  margin-top: auto;
+}
+
+.whiteband {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px);
+  height: 10rem;
+  top: 40%;
+  z-index: 0;
+  position: absolute;
+}
+
+.description {
+  background-color: #f97b22;
+  width: 100%;
+  height: 55rem;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  position: relative;
+  z-index: 11;
+}
+
+.description-text {
+  font-family: 'Josefin Sans', sans-serif;
+  color: black;
+  width: 100%;
+  margin: 2rem 2rem;
+  z-index: 1;
+}
+
+.description-img {
+  width: 100%;
+  height: 100%;
+  margin: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder {
+  max-width: 30rem;
+  height: auto;
+  float: right;
+}
