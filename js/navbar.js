@@ -8,6 +8,8 @@ var enterAnimation = false;
 var dropdownList = document.getElementById("navbar_text-container").children[0].children;
 //each <a> tag in the navbar
 var aTagList = getNavbarTextContainer();
+//a list
+var dropdownStatus = Array(aTagList.length).fill(false);
 
 /****************************************/
 /*                 animjs               */
@@ -104,11 +106,18 @@ document.getElementById("navbar_logo-container").addEventListener("mouseleave", 
 for (var dropdownElement of dropdownList) {
     var dropdownLink = dropdownElement.children[0];
     dropdownLink.addEventListener("click", function (e) {
-        //We reset all navbar
-        resetNavbar();
-        //we get the parent node of the <a> tag
-        var dropdownLink = e.target.parentNode;
-        setDropdown("block", dropdownLink);
+        if (e.target.parentNode.children.length > 1)
+        {
+            var styleDropdown = e.target.parentNode.children[1].style.display;
+            //We reset all navbar
+            resetNavbar();
+            //If the dropdown was hidden, show the item
+            if(!(styleDropdown == "block")) {
+                //we get the parent node of the <a> tag
+                var dropdownLink = e.target.parentNode;
+                setDropdown("block", dropdownLink);
+            }
+        }
     });
 }
 
