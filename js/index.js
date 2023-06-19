@@ -1,3 +1,7 @@
+/****************************************/
+/*                 animjs               */
+/****************************************/
+
 var saoulAnimation = anime({
     targets: '.photosaoul',
     easing: 'easeOutQuint',
@@ -33,6 +37,9 @@ var textAnimation = anime({
     },
 })
 
+/****************************************/
+/*                 main                 */
+/****************************************/
 saoulAnimation.reverse()
 ready(function(){
     setTimeout(() => {
@@ -41,6 +48,10 @@ ready(function(){
         textAnimation.play();
     }, 1000);
 });
+
+/****************************************/
+/*               functions              */
+/****************************************/
 
 function superAnim() {
     saoulAnimation.play()
