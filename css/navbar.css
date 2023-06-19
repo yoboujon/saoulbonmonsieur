@@ -69,7 +69,7 @@ button {
     float: none;
     justify-content: center;
     position: absolute;
-    width: auto;
+    width: 15rem;
     overflow: initial;
     display: none;
     z-index: 10;
