@@ -56,7 +56,6 @@ p {
   backdrop-filter: blur(16px);
   height: 10rem;
   top: 40%;
-  z-index: 0;
   position: absolute;
 }
 
@@ -74,7 +73,6 @@ p {
   color: black;
   width: 100%;
   margin: 2rem 2rem;
-  z-index: 1;
 }
 
 .description-img {
