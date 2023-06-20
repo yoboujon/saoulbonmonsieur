@@ -75,7 +75,7 @@ function getNavbarTextContainer() {
  */
 function resetNavbar() {
     //For each dropdown found with the given classname, will set the display to none
-    for (dropdownClass of navbarDropdown) {
+    for (var dropdownClass of navbarDropdown) {
         dropdownClass.style.display = "none";
     }
 }
@@ -84,25 +84,35 @@ function resetNavbar() {
 /*                 main                 */
 /****************************************/
 
+//Setting the logo URL
+document.getElementsByClassName("navbar_logo")[0].src = urlStr+"/assets/Logo.png";
+
 //Setting the href links for in directory links
-var dropdownCount = 0;
+var urlOffset = urlStr.length
+//if dir found, we apply the dir offset + '/' (1 char)
+if(dirStr.length > 1)
+{
+    urlOffset = urlOffset + dirStr.length + 1;
+}
+//dor evry dropdown of the navbar we check each <a> 
 for(var dropdown of navbarDropdown)
 {
     for(var aTagDropdown of dropdown.children)
     {
-        aTagDropdown.href = concatPath(getSlashNum(window.location.pathname)-1,dropdownLinks[dropdownCount]);
-        dropdownCount++;
+        //We slice the href with the url and the directory offset
+        var pathStr = aTagDropdown.href.slice(urlOffset,aTagDropdown.href.length);
+        //We then put again the url and the path we want
+        aTagDropdown.href = urlStr+pathStr;
     }
 }
-dropdownCount = 0;
+//We do the same but with aTag replacing aTagDropdown, each <a> of the aTagList
 for(var aTag of aTagList)
 {
-    console.log(aTag);
+    //only aTag that are not blank (=#0) are affected
     if(!(aTag.href.includes("#0")))
     {
-        console.log(aTag);
-        aTag.href = concatPath(getSlashNum(window.location.pathname)-1,containerLinks[dropdownCount]);
-        dropdownCount++;
+        var pathStr = aTag.href.slice(urlOffset,aTag.href.length);
+        aTag.href = urlStr+pathStr;
     }
 }
 
@@ -153,7 +163,7 @@ for (var dropdownElement of dropdownList) {
 window.addEventListener('click', function (e) {
     //clickState is set to 1 if the click is done outside any dropdownElement or the dropdown itself
     var clickState = false;
-    for (dropdownClass of navbarDropdown) {
+    for (var dropdownClass of navbarDropdown) {
         clickState |= dropdownClass.contains(e.target);
     }
     for (aTag of aTagList) {

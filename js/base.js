@@ -1,4 +1,12 @@
 /****************************************/
+/*           global variables           */
+/****************************************/
+//Getting the complete URL and slice it by [0] to the directory URL, return the domain name.
+var urlStr = window.location.toString().slice(0,window.location.toString().lastIndexOf(window.location.pathname)+1);
+//Getting the dir name by gathering the pathname and substract it with the last '/'.
+var dirStr = window.location.pathname.substring(1, window.location.pathname.lastIndexOf('/'));
+
+/****************************************/
 /*               functions              */
 /****************************************/
 
@@ -81,5 +89,5 @@ function concatPath(slashNum, basePath)
 /****************************************/
 
 window.addEventListener('load', function () {
-    load("../components/navbar.html", document.getElementsByTagName("Navbar")[0], concatPath(getSlashNum(window.location.pathname)-1,"js/navbar.js"), this.document.getElementsByTagName("head")[0]);
+    load(urlStr+"components/navbar.html", document.getElementsByTagName("Navbar")[0], urlStr+"js/navbar.js", this.document.getElementsByTagName("head")[0]);
 })
