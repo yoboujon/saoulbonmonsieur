@@ -20,7 +20,7 @@ function load(urlHTML, elementHTML, urlJS, elementJS) {
     })
         .catch(
             function (err) {
-                console.warn('Could not load the Navbar.', err)
+                console.warn('Could not load '+urlHTML+': Add the correct tag ?', err);
             }
         );
 }
@@ -32,7 +32,7 @@ function loadHTML(url, element) {
         element.innerHTML = htmltext;
     }).catch(
         function (err) {
-            console.warn('Could not load the Navbar.', err)
+            console.warn('Could not load '+url+': Add the correct tag ?', err);
         }
     );
 }
@@ -41,6 +41,13 @@ function loadJS(url, element) {
     var scriptTag = document.createElement('script');
     scriptTag.src = url;
     element.appendChild(scriptTag);
+}
+
+function loadCSS(url, element) {
+    var linkTag = document.createElement('link');
+    linkTag.rel = "stylesheet";
+    linkTag.href = url;
+    element.appendChild(linkTag);
 }
 
 function ready(callback) {
@@ -88,7 +95,11 @@ function concatPath(slashNum, basePath)
 /*                 main                 */
 /****************************************/
 
+var headTag = document.getElementsByTagName("head")[0];
 window.addEventListener('load', function () {
-    load(urlStr+"components/navbar.html", document.getElementsByTagName("Navbar")[0], urlStr+"js/navbar.js", this.document.getElementsByTagName("head")[0]);
-    load(urlStr+"components/footer.html", document.getElementsByTagName("Footer")[0], urlStr+"js/footer.js", this.document.getElementsByTagName("head")[0]);
+    loadCSS(urlStr+"css/base.css", headTag);
+    loadCSS(urlStr+"css/navbar.css", headTag);
+    load(urlStr+"components/navbar.html", document.getElementsByTagName("Navbar")[0], urlStr+"js/navbar.js", headTag);
+    loadCSS(urlStr+"css/footer.css", headTag);
+    load(urlStr+"components/footer.html", document.getElementsByTagName("Footer")[0], urlStr+"js/footer.js", headTag);
 })
