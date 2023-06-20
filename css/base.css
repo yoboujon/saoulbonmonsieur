@@ -23,3 +23,11 @@ h1 {
 p {
     font-family: 'Josefin Sans', sans-serif;
 }
+
+.right-align {
+    text-align: right;
+}
+
+.left-align {
+    text-align: left;
+}
