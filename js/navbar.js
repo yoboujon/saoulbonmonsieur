@@ -86,6 +86,8 @@ function resetNavbar() {
 
 //Setting the logo URL
 document.getElementsByClassName("navbar_logo")[0].src = urlStr+"/assets/Logo.png";
+//Setting the logo href
+document.getElementById("navbar_logo-home").href = urlStr;
 
 //Setting the href links for in directory links
 var urlOffset = urlStr.length
