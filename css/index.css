@@ -59,6 +59,8 @@
   color: black;
   width: 100%;
   margin: 2rem 2rem;
+  word-wrap: break-word;
+  overflow: clip;
 }
 
 .description-img {

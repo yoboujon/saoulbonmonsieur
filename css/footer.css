@@ -1,6 +1,16 @@
 #footer
 {
+    display: grid;
+    grid-gap: 0px;
     height: 30rem;
+    grid-template-columns: repeat(3, 33.3%);
     background-color: var(--color-dark);
     color: var(--color-white);
+    overflow: clip;
+}
+
+.footer-container
+{
+    padding: 1rem 2rem;
+    word-wrap: break-word;
 }
