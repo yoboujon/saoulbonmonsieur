@@ -1,0 +1,6 @@
+#footer
+{
+    height: 30rem;
+    background-color: var(--color-dark);
+    color: var(--color-white);
+}

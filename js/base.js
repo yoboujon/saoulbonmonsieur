@@ -90,4 +90,5 @@ function concatPath(slashNum, basePath)
 
 window.addEventListener('load', function () {
     load(urlStr+"components/navbar.html", document.getElementsByTagName("Navbar")[0], urlStr+"js/navbar.js", this.document.getElementsByTagName("head")[0]);
+    load(urlStr+"components/footer.html", document.getElementsByTagName("Footer")[0], urlStr+"js/footer.js", this.document.getElementsByTagName("head")[0]);
 })

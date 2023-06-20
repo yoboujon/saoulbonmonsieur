@@ -1,15 +1,23 @@
+:root {
+    --color-dark: #2D2424;
+    --color-main-light: #A55540;
+    --color-main: #5C3D2E;
+    --color-light: #E79A58;
+    --color-white: #E1D5D2;
+    --color-gray: #4B4A5A;
+}
+
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
-  }
-  
-  h1 {
+}
+
+h1 {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
-  }
-  
-  p {
+}
+
+p {
     font-family: 'Josefin Sans', sans-serif;
-  }
-  
+}

@@ -10,7 +10,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #f5a122;
+    background-color: var(--color-light);
     z-index: 3;
     overflow: initial;
 }
@@ -54,7 +54,7 @@ button {
 #navbar_text-container a:hover {
     transform: translateY(-2px);
     background-color: rgba(255, 255, 255, 0.75);
-    color: #9e6b1f;
+    color: var(--color-main);
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
@@ -82,6 +82,6 @@ button {
 
 .navbar_dropdown a:hover {
     transform: translateX(5px) !important;
-    background-color: #f5a122 !important;
-    color: white !important;
+    background-color: var(--color-light) !important;
+    color: var(--color-white) !important;
 }
