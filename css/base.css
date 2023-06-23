@@ -16,8 +16,16 @@
     scroll-behavior: smooth;
 }
 
-h1 {
+*:any-link{
+    color: var(--color-light);
+}
+
+h1,h2,h3 {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.italic {
+    font-style: italic;
 }
 
 p {
