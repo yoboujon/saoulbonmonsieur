@@ -39,3 +39,44 @@ p {
 .left-align {
     text-align: left;
 }
+
+.btn {
+    border-radius: .25rem;
+    color: black;
+    background-color: var(--color-white);
+    font-weight: 800;
+    padding: 1rem 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all .3s ease 0s;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+    background-color: var(--color-light);
+    color: var(--color-white);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.black-bg{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 99;
+    display: none;
+}
+
+.legal{
+    border-radius: .5rem;
+    height: 80%;
+    width: 50%;
+    position: relative;
+    top: 10%;
+    left: 25%;
+    background-color: var(--color-white);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    z-index: 100;
+}

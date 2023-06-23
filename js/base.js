@@ -2,7 +2,7 @@
 /*           global variables           */
 /****************************************/
 //Getting the complete URL and slice it by [0] to the directory URL, return the domain name.
-var urlStr = window.location.toString().slice(0,window.location.toString().lastIndexOf(window.location.pathname)+1);
+var urlStr = window.location.toString().slice(0, window.location.toString().lastIndexOf(window.location.pathname) + 1);
 //Getting the dir name by gathering the pathname and substract it with the last '/'.
 var dirStr = window.location.pathname.substring(1, window.location.pathname.lastIndexOf('/'));
 
@@ -20,7 +20,7 @@ function load(urlHTML, elementHTML, urlJS, elementJS) {
     })
         .catch(
             function (err) {
-                console.warn('Could not load '+urlHTML+': Add the correct tag ?', err);
+                console.warn('Could not load ' + urlHTML + ': Add the correct tag ?', err);
             }
         );
 }
@@ -32,7 +32,7 @@ function loadHTML(url, element) {
         element.innerHTML = htmltext;
     }).catch(
         function (err) {
-            console.warn('Could not load '+url+': Add the correct tag ?', err);
+            console.warn('Could not load ' + url + ': Add the correct tag ?', err);
         }
     );
 }
@@ -82,24 +82,46 @@ function getSlashNum(string) {
  * @param {Concat String} basePath 
  * @returns the concatened string
  */
-function concatPath(slashNum, basePath)
-{
+function concatPath(slashNum, basePath) {
     var slashString = "";
     for (let i = 0; i < slashNum; i++) {
         slashString += "../";
     }
-    return slashString+basePath;
+    return slashString + basePath;
+}
+
+function showPopUp(className) {
+    document.getElementsByClassName(className)[0].style.display = "block";
+    document.getElementsByTagName("body")[0].style.height = "100%";
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
+}
+
+function closePopUp(className) {
+    document.getElementsByClassName(className)[0].style.display = "none";
+    document.getElementsByTagName("body")[0].style.height = "";
+    document.getElementsByTagName("body")[0].style.overflow = "";
+}
+
+function popUpPlacement(className) {
+    var popup = document.getElementsByClassName(className)[0];
+    var body = document.getElementsByTagName("body")[0];
+    body.insertBefore(popup, body.firstChild)
 }
 
 /****************************************/
 /*                 main                 */
 /****************************************/
 
+//Loading the html,js and css of navbar and footer
 var headTag = document.getElementsByTagName("head")[0];
 window.addEventListener('load', function () {
-    loadCSS(urlStr+"css/base.css", headTag);
-    loadCSS(urlStr+"css/navbar.css", headTag);
-    load(urlStr+"components/navbar.html", document.getElementsByTagName("Navbar")[0], urlStr+"js/navbar.js", headTag);
-    loadCSS(urlStr+"css/footer.css", headTag);
-    load(urlStr+"components/footer.html", document.getElementsByTagName("Footer")[0], urlStr+"js/footer.js", headTag);
+    loadCSS(urlStr + "css/base.css", headTag);
+    loadCSS(urlStr + "css/navbar.css", headTag);
+    load(urlStr + "components/navbar.html", document.getElementsByTagName("Navbar")[0], urlStr + "js/navbar.js", headTag);
+    loadCSS(urlStr + "css/footer.css", headTag);
+    load(urlStr + "components/footer.html", document.getElementsByTagName("Footer")[0], urlStr + "js/footer.js", headTag)
+    setTimeout(() => {
+        //Will change
+        popUpPlacement("black-bg");
+    }, 200);
 })
