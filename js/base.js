@@ -125,5 +125,5 @@ window.addEventListener('load', function () {
     setTimeout(() => {
         //Will change
         popUpPlacement("black-bg");
-    }, 200);
+    }, 500);
 })
