@@ -2,16 +2,18 @@
 /*           global variables           */
 /****************************************/
 
+//When window width >800 set to true
+var mobileMode = false
 //enterAnimation is a status linked to mouseenter/leave of the icon
 var enterAnimation = false;
 //each <li> tag of the navbar_text-container
-var dropdownList = document.getElementById("navbar_text-container").children[0].children;
+var dropdownList = document.getElementById("navbar_text-container").children[1].children;
 //each <a> tag in the navbar
 var aTagList = getNavbarTextContainer();
 //a list
 var dropdownStatus = Array(aTagList.length).fill(false);
 //list of dropdown links
-var dropdownLinks = ["droits/penal.html","droits/affaire.html","join/contact.html","join/coordonees.html"];
+var dropdownLinks = ["droits/penal.html", "droits/affaire.html", "join/contact.html", "join/coordonees.html"];
 //list of container links
 var containerLinks = ["avocat"];
 //navbarDropdown Element
@@ -62,9 +64,8 @@ function setDropdown(display, element) {
  */
 function getNavbarTextContainer() {
     var returnAtag = [];
-    var container = document.getElementById("navbar_text-container");
     //For each a tag we found in the text container, push the element to the return array
-    for (var aTag of container.children[0].children) {
+    for (var aTag of dropdownList) {
         returnAtag.push(aTag.children[0])
     }
     return returnAtag;
@@ -80,41 +81,44 @@ function resetNavbar() {
     }
 }
 
+function openMenu() {
+    document.getElementById("navbar_text-container").style.display = "block";
+}
+
+function closeMenu() {
+    document.getElementById("navbar_text-container").style.display = "none";
+}
+
 /****************************************/
 /*                 main                 */
 /****************************************/
 
 //Setting the logo URL
-document.getElementsByClassName("navbar_logo")[0].src = urlStr+"/assets/Logo.png";
+document.getElementsByClassName("navbar_logo")[0].src = urlStr + "/assets/Logo.png";
 //Setting the logo href
 document.getElementById("navbar_logo-home").href = urlStr;
 
 //Setting the href links for in directory links
 var urlOffset = urlStr.length
 //if dir found, we apply the dir offset + '/' (1 char)
-if(dirStr.length > 1)
-{
+if (dirStr.length > 1) {
     urlOffset = urlOffset + dirStr.length + 1;
 }
 //dor evry dropdown of the navbar we check each <a> 
-for(var dropdown of navbarDropdown)
-{
-    for(var aTagDropdown of dropdown.children)
-    {
+for (var dropdown of navbarDropdown) {
+    for (var aTagDropdown of dropdown.children) {
         //We slice the href with the url and the directory offset
-        var pathStr = aTagDropdown.href.slice(urlOffset,aTagDropdown.href.length);
+        var pathStr = aTagDropdown.href.slice(urlOffset, aTagDropdown.href.length);
         //We then put again the url and the path we want
-        aTagDropdown.href = urlStr+pathStr;
+        aTagDropdown.href = urlStr + pathStr;
     }
 }
 //We do the same but with aTag replacing aTagDropdown, each <a> of the aTagList
-for(var aTag of aTagList)
-{
+for (var aTag of aTagList) {
     //only aTag that are not blank (=#0) are affected
-    if(!(aTag.href.includes("#0")))
-    {
-        var pathStr = aTag.href.slice(urlOffset,aTag.href.length);
-        aTag.href = urlStr+pathStr;
+    if (!(aTag.href.includes("#0"))) {
+        var pathStr = aTag.href.slice(urlOffset, aTag.href.length);
+        aTag.href = urlStr + pathStr;
     }
 }
 
@@ -146,13 +150,12 @@ document.getElementById("navbar_logo-container").addEventListener("mouseleave", 
 for (var dropdownElement of dropdownList) {
     var dropdownLink = dropdownElement.children[0];
     dropdownLink.addEventListener("click", function (e) {
-        if (e.target.parentNode.children.length > 1)
-        {
+        if (e.target.parentNode.children.length > 1) {
             var styleDropdown = e.target.parentNode.children[1].style.display;
             //We reset all navbar
             resetNavbar();
             //If the dropdown was hidden, show the item
-            if(!(styleDropdown == "block")) {
+            if (!(styleDropdown == "block")) {
                 //we get the parent node of the <a> tag
                 var dropdownLink = e.target.parentNode;
                 setDropdown("block", dropdownLink);
@@ -174,5 +177,19 @@ window.addEventListener('click', function (e) {
     //if the mouse is outside any aTag/dropdownClass we reset any navbar
     if (!clickState) {
         resetNavbar();
+    }
+});
+
+//When changing the window size
+window.addEventListener('resize', function (e) {
+    if((window.innerWidth > 800) && mobileMode)
+    {
+        openMenu();
+        mobileMode = false;
+    }
+    if((window.innerWidth < 800) && !mobileMode)
+    {
+        closeMenu();
+        mobileMode = true;
     }
 });
