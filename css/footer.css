@@ -49,10 +49,12 @@
     }
 
     .footer-bottom_grid.right-align{
+        flex: 1;
         padding-right: 1rem;
     }
 
     .footer-bottom_grid.left-align{
+        flex: 2;
         padding-left: 1rem;
     }
 
