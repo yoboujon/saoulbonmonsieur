@@ -3,38 +3,178 @@
   opacity: 0;
 }
 
-.presentation {
-  overflow: hidden;
-  width: 100%;
-  height: 30rem;
-  display: flex;
-  background-image: url("../assets/cabinet-avocats-900x601.jpeg");
-  background-position-y: 100%;
-  background-size: cover;
-  position: relative;
+@media screen and (min-width: 700px) {
+  .presentation {
+    overflow: hidden;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    background-image: url("../assets/cabinet-avocats-900x601.jpeg");
+    background-position-y: 50%;
+    background-size: cover;
+    position: relative;
+  }
+
+  .presentation-text {
+    width: 100%;
+    margin: 1rem;
+    padding: 0 0 0 2rem;
+    z-index: 1;
+    font-size: larger;
+    color: var(--color-dark);
+    position: relative;
+    top: 45%;
+  }
+
+  .photosaoul {
+    max-width: inherit;
+    height: inherit;
+    float: right;
+    display: none;
+    margin-top: auto;
+  }
+
+  .description {
+    background-color: var(--color-main-light);
+    width: 100%;
+    height: auto;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    position: relative;
+  }
+
+  .description-text {
+    font-family: 'Josefin Sans', sans-serif;
+    color: black;
+    width: 100%;
+    margin: 2rem 2rem;
+    word-wrap: break-word;
+    text-align: justify;
+  }
+
+  .description-img {
+    width: 100%;
+    height: auto;
+    margin: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .billboard {
+    max-width: 30rem;
+    height: auto;
+    float: right;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+
+  .profilepic {
+    max-width: 20rem;
+    height: auto;
+    margin: 1.5rem 0;
+    float: right;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+
+  .description-btn a{
+    margin: 1rem;
+    font-size: medium;
+    text-align: center;
+  }
 }
 
-.presentation-text {
-  width: 100%;
-  margin: 14rem 2rem;
-  padding: 0 0 0 2rem;
-  z-index: 1;
-  font-size: larger;
-  color: var(--color-dark);
+@media screen and (max-width: 700px) {
+  .presentation-text {
+    width: 100%;
+    padding: 0 0 0 2rem;
+    z-index: 1;
+    font-size: small;
+    color: var(--color-dark);
+    position: relative;
+    top: 45%;
+  }
+
+  .photosaoul {
+    max-width: inherit;
+    height: 50%;
+    float: right;
+    display: none;
+    margin-top: 15rem;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+  .presentation {
+    overflow: hidden;
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    background-image: url("../assets/cabinet-avocats-900x601.jpeg");
+    background-position-y: 100%;
+    background-size: cover;
+    position: relative;
+  }
+
+  .description {
+    background-color: var(--color-main-light);
+    width: 100%;
+    height: auto;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    position: relative;
+    flex-direction: column;
+    overflow: clip;
+  }
+
+  .description-text {
+    font-family: 'Josefin Sans', sans-serif;
+    color: black;
+    width: 100%;
+    margin: 2rem 2rem;
+    padding-right: 4rem;
+    word-wrap: break-word;
+    text-align: justify;
+  }
+
+  .description-img {
+    width: 100%;
+    height: auto;
+    margin: 0 2rem;
+    padding-right: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .billboard {
+    max-width: 20rem;
+    height: auto;
+    float: right;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    padding-bottom: 2rem;
+  }
+
+  .profilepic {
+    max-width: 15rem;
+    height: auto;
+    margin: 1.5rem 0;
+    float: right;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  }
+
+  .description-btn a{
+    margin: 1rem;
+    font-size: small;
+    text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  }
 }
 
 .presentation-img {
   width: 100%;
   height: 100%;
   z-index: 10;
-}
-
-.photosaoul {
-  max-width: inherit;
-  height: inherit;
-  float: right;
-  display: none;
-  margin-top: auto;
 }
 
 .whiteband {
@@ -45,48 +185,11 @@
   position: absolute;
 }
 
-.description {
-  background-color: var(--color-main-light);
-  width: 100%;
-  height: auto;
-  display: flex;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  position: relative;
-}
-
-.description-text {
-  font-family: 'Josefin Sans', sans-serif;
-  color: black;
-  width: 100%;
-  margin: 2rem 2rem;
-  word-wrap: break-word;
-  overflow: clip;
-  text-align: justify;
-}
-
 .description-text em {
   color: var(--color-dark);
 }
 
-.description-img {
-  width: 100%;
-  height: auto;
-  margin: 0 2rem;
+.description-btn {
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.billboard {
-  max-width: 30rem;
-  height: auto;
-  float: right;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-}
-
-.profilepic {
-  max-width: 25rem;
-  height: auto;
-  float: right;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  flex-direction: row;
 }

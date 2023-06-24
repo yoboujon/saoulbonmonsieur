@@ -113,6 +113,7 @@ function popUpPlacement(className) {
 /****************************************/
 
 //Loading the html,js and css of navbar and footer
+//During the loading process we need a loading status bar
 var headTag = document.getElementsByTagName("head")[0];
 window.addEventListener('load', function () {
     loadCSS(urlStr + "css/base.css", headTag);
