@@ -116,6 +116,7 @@ function popUpPlacement(className) {
 //During the loading process we need a loading status bar
 var headTag = document.getElementsByTagName("head")[0];
 window.addEventListener('load', function () {
+    loadJS("//code.iconify.design/1/1.0.6/iconify.min.js", headTag)
     loadCSS(urlStr + "css/base.css", headTag);
     loadCSS(urlStr + "css/navbar.css", headTag);
     load(urlStr + "components/navbar.html", document.getElementsByTagName("Navbar")[0], urlStr + "js/navbar.js", headTag);

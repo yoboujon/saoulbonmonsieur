@@ -109,13 +109,17 @@
     }
 
     #navbar_menu svg:hover{
-        color: var(--color-white);
+        color: var(--color-main);
     }
 
     .navbar_menu-close svg{
         font-size: 50px;
         color: var(--color-dark);
         transition: all .3s ease 0s;
+    }
+
+    .navbar_menu-close svg:hover{
+        color: var(--color-main);
     }
 
     .navbar_dropdown {
@@ -164,4 +168,10 @@ button {
     transform: translateX(5px) !important;
     background-color: var(--color-light) !important;
     color: var(--color-white) !important;
+}
+
+.navbar_menu-close-btn:hover{
+    transform: translateY(-1px) !important;
+    background-color: rgba(255, 255, 255, 0)!important;
+    box-shadow: none !important;
 }

@@ -6,18 +6,20 @@
 var mobileMode = false
 //enterAnimation is a status linked to mouseenter/leave of the icon
 var enterAnimation = false;
+//same but for menu
+var enterMenuAnimation = false;
 //each <li> tag of the navbar_text-container
 var dropdownList = document.getElementById("navbar_text-container").children[1].children;
 //each <a> tag in the navbar
 var aTagList = getNavbarTextContainer();
 //a list
 var dropdownStatus = Array(aTagList.length).fill(false);
-//list of dropdown links
-var dropdownLinks = ["droits/penal.html", "droits/affaire.html", "join/contact.html", "join/coordonees.html"];
-//list of container links
-var containerLinks = ["avocat"];
 //navbarDropdown Element
 var navbarDropdown = document.getElementsByClassName("navbar_dropdown");
+//menu close SVG Element
+var menuCloseElement = document.getElementsByClassName("navbar_menu-close-btn")[0].children[0];
+//menu hamburger SVG Element
+var menuOpenElement = document.getElementsByClassName("navbar_menu-click")[0].children[0];
 
 /****************************************/
 /*                 animjs               */
@@ -40,6 +42,17 @@ var logoRotate = anime({
             document.getElementsByClassName("navbar_logo")[0].style.filter = "";
         }
     }
+});
+
+var menuAnimation = anime({
+    targets: '.navbar_menu-click polygon',
+    points: [
+        { value: '3,6 21,6 21,8 3,8 3,6 3,11 21,11 21,13 3,13 3,11 3,16 21,16 21,18 3,18 3,16', duration: 10, delay: 0 },
+        { value: '15.410 16.580, 10.830 12.000, 15.410 7.410, 14.000 6.000, 8.000 12.000, 14.000 18.000, 15.410 16.580', duration: 200, delay: 10 }
+    ],
+    scale: 1,
+    easing: 'easeOutExpo',
+    autoplay: false,
 });
 
 /****************************************/
@@ -192,4 +205,28 @@ window.addEventListener('resize', function (e) {
         closeMenu();
         mobileMode = true;
     }
+});
+
+//Animation to be played when hovering the menu
+menuOpenElement.addEventListener("mouseenter", function () {
+    //enterAnimation is now true (see update in logoRotate)
+    enterMenuAnimation = true;
+    //Will play the animation and when finished set enterAnimation to false
+    menuAnimation.play();
+    menuAnimation.finished.then(() => {
+        enterMenuAnimation = false;
+    })
+});
+
+//Animation to be played when leaving the menu
+menuOpenElement.addEventListener("mouseleave", function () {
+    //enterAnimation is now false (see update in logoRotate)
+    enterMenuAnimation = false;
+    menuAnimation.reverse();
+    menuAnimation.play();
+    //Will play the reversed animation and when finished set enterAnimation to true and and cancel the reverse
+    menuAnimation.finished.then(() => {
+        menuAnimation.reverse();
+        enterMenuAnimation = true;
+    })
 });
