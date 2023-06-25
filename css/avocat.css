@@ -18,3 +18,54 @@
     position: relative;
     top: 40%;
 }
+
+@media screen and (min-width: 1000px) {
+    .block {
+        padding: 2rem 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .parcours img {
+        max-width: 30rem;
+        margin: 2rem 2rem;
+        height: auto;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
+
+    .source {
+        display: flex;
+        float: right;
+        margin: 0 2rem;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .block {
+        padding: 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .parcours img {
+        max-width: 25rem;
+        margin: 2rem 2rem;
+        height: auto;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
+
+    .source {
+        display: flex;
+        font-size: x-small;
+        float: center;
+        margin: 0 2rem;
+    }
+}
+
+.parcours em {
+    color: var(--color-dark);
+}

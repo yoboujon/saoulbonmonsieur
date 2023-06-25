@@ -107,8 +107,8 @@ function resetNavbar() {
 }
 
 function openMenu(playAnimation) {
-    menuOpened=true;
     if (playAnimation) {
+        menuOpened=true;
         document.getElementById("navbar_text-container").style.display = "block";
         navbarAnimation.reverse();
         navbarAnimation.restart();
@@ -119,8 +119,8 @@ function openMenu(playAnimation) {
 }
 
 function closeMenu(playAnimation) {
-    menuOpened=false;
     if (playAnimation) {
+        menuOpened=false;
         navbarAnimation.reverse();
         navbarAnimation.restart();
         navbarAnimation.finished.then(() => {
@@ -237,7 +237,6 @@ window.addEventListener('resize', function (e) {
     }
     if ((window.innerWidth < 800) && !mobileMode) {
         //when switching from computer to mobile
-        console.log("computer to mobile");
         closeMenu(false);
         mobileMode = true;
     }
