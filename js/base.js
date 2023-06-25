@@ -125,7 +125,7 @@ function loadingCreation() {
     elementLoadingContentImg.className="loading-content";
     var img = document.createElement("img");
     img.className = "loading-img";
-    img.src = "assets/Logo.png";
+    img.src = urlStr+ "assets/Logo.png";
     elementLoadingContentImg.appendChild(img);
 
     //we then append all
