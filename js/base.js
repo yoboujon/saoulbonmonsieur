@@ -7,6 +7,8 @@ var urlStr = window.location.toString().slice(0, window.location.toString().last
 var dirStr = window.location.pathname.substring(1, window.location.pathname.lastIndexOf('/'));
 //the head tag
 var headTag = document.getElementsByTagName("head")[0];
+//the body tag
+var bodyTag = document.getElementsByTagName("body")[0];
 //Global variable set to true when finished loading external html/css/js files
 var finishedLoading = false;
 
@@ -98,39 +100,64 @@ function concatPath(slashNum, basePath) {
     return slashString + basePath;
 }
 
-function showPopUp(className) {
-    document.getElementsByClassName(className)[0].style.display = "block";
-    document.getElementsByTagName("body")[0].style.height = "100%";
-    document.getElementsByTagName("body")[0].style.overflow = "hidden";
-}
-
-function closePopUp(className) {
-    document.getElementsByClassName(className)[0].style.display = "none";
-    document.getElementsByTagName("body")[0].style.height = "";
-    document.getElementsByTagName("body")[0].style.overflow = "";
-}
-
 function popUpPlacement(className) {
     var popup = document.getElementsByClassName(className)[0];
     var body = document.getElementsByTagName("body")[0];
     body.insertBefore(popup, body.firstChild)
 }
 
+function loadingCreation() {
+    var elementLoadingBg = document.createElement("div");
+    elementLoadingBg.id="loading-bg";
+
+    var elementLoadingContainer = document.createElement("div");
+    elementLoadingContainer.id="loading-container";
+
+    //the text inside the container
+    var elementLoadingContentTxt = document.createElement("div");
+    elementLoadingContentTxt.className="loading-content";
+    var txt = document.createElement("p");
+    txt.innerHTML="Loading...";
+    elementLoadingContentTxt.appendChild(txt);
+
+    //the image inside the container
+    var elementLoadingContentImg = document.createElement("div");
+    elementLoadingContentImg.className="loading-content";
+    var img = document.createElement("img");
+    img.className = "loading-img";
+    img.src = "assets/Logo.png";
+    elementLoadingContentImg.appendChild(img);
+
+    //we then append all
+    elementLoadingContainer.append(elementLoadingContentImg);
+    elementLoadingContainer.append(elementLoadingContentTxt);
+    elementLoadingBg.append(elementLoadingContainer);
+    return elementLoadingBg;
+}
+
 /****************************************/
 /*                 main                 */
 /****************************************/
-window.addEventListener('load', function () {
-    var body = document.getElementsByTagName("body")[0];
-    //loading elements
-    var loadingBackground = document.createElement("div");
-    loadingBackground.id = "loading-bg";
-    body.insertBefore(loadingBackground, body.firstChild);
+//Adding the loading bar
+var loadingElement = loadingCreation();
+bodyTag.insertBefore(loadingElement, bodyTag.firstChild);
+
+//We then create the animation
+var loadingAnimation = anime({
+    targets: '.loading-content .loading-img',
+    easing: 'easeOutQuint',
+    translateY: [
+        { value: -30, duration: 1000, delay: 0 },
+        { value: -30, duration: 500, delay: 0 },
+        { value: 0, duration: 1000, delay: 0 }
+    ],
+    loop: true
 });
+
 //Loading the html,js and css of navbar and footer
 window.addEventListener('load', function () {
     //instant loading
     loadJS("//code.iconify.design/1/1.0.6/iconify.min.js", headTag);
-    loadCSS(urlStr + "css/base.css", headTag);
     loadCSS(urlStr + "css/navbar.css", headTag);
     loadCSS(urlStr + "css/footer.css", headTag);
     //async loading

@@ -84,6 +84,31 @@ p {
     z-index: 99;
 }
 
+#loading-container {
+    width: auto;
+    height: 30%;
+    top: 35%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.loading-content img{
+    margin: 0.5rem;
+    height: auto;
+    width: 30%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.loading-content p{
+    color: var(--color-dark);
+    font-size: xx-large;
+    text-align: center;
+    margin: 1rem;
+}
+
 @media screen and (min-width: 700px) {
     .block {
         background-color: var(--color-main-light);
