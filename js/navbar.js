@@ -8,6 +8,8 @@ var mobileMode = false
 var enterAnimation = false;
 //same but for menu
 var enterMenuAnimation = false;
+//when menu is opened or not
+var menuOpened = false;
 //each <li> tag of the navbar_text-container
 var dropdownList = document.getElementById("navbar_text-container").children[1].children;
 //each <a> tag in the navbar
@@ -55,6 +57,16 @@ var menuAnimation = anime({
     autoplay: false,
 });
 
+var navbarAnimation = anime({
+    targets: '#navbar_text-container',
+    translateX: [
+        { value: "", duration: 0, delay: 0 },
+        { value: "-20rem", duration: 300, delay: 0 }
+    ],
+    easing: 'easeOutExpo',
+    autoplay: false
+})
+
 /****************************************/
 /*               functions              */
 /****************************************/
@@ -94,12 +106,30 @@ function resetNavbar() {
     }
 }
 
-function openMenu() {
-    document.getElementById("navbar_text-container").style.display = "block";
+function openMenu(playAnimation) {
+    menuOpened=true;
+    if (playAnimation) {
+        document.getElementById("navbar_text-container").style.display = "block";
+        navbarAnimation.reverse();
+        navbarAnimation.restart();
+    }
+    else {
+        document.getElementById("navbar_text-container").style.display = "block";
+    }
 }
 
-function closeMenu() {
-    document.getElementById("navbar_text-container").style.display = "none";
+function closeMenu(playAnimation) {
+    menuOpened=false;
+    if (playAnimation) {
+        navbarAnimation.reverse();
+        navbarAnimation.restart();
+        navbarAnimation.finished.then(() => {
+            document.getElementById("navbar_text-container").style.display = "none";
+        })
+    }
+    else {
+        document.getElementById("navbar_text-container").style.display = "none";
+    }
 }
 
 /****************************************/
@@ -195,14 +225,20 @@ window.addEventListener('click', function (e) {
 
 //When changing the window size
 window.addEventListener('resize', function (e) {
-    if((window.innerWidth > 800) && mobileMode)
-    {
-        openMenu();
+    if ((window.innerWidth > 800) && mobileMode) {
+        //when switching from mobile to computer
+        document.getElementById("navbar_text-container").style.transform = "";
+        openMenu(false);
+        if(menuOpened)
+        {
+            navbarAnimation.reverse();
+        }
         mobileMode = false;
     }
-    if((window.innerWidth < 800) && !mobileMode)
-    {
-        closeMenu();
+    if ((window.innerWidth < 800) && !mobileMode) {
+        //when switching from computer to mobile
+        console.log("computer to mobile");
+        closeMenu(false);
         mobileMode = true;
     }
 });
