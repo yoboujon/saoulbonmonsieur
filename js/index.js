@@ -27,7 +27,7 @@ var saoulAnimation = anime({
     ],
     rotate: [
         { value: 0, duration: 100, delay: 0 },
-        { value: -60, duration: 1000, delay: 100 }
+        { value: -780, duration: 1000, delay: 100 }
     ],
     begin: function () {
         document.getElementsByClassName("photosaoul")[0].style.display = "flex";
@@ -37,13 +37,15 @@ var saoulAnimation = anime({
 var whiteBandAnimation = anime({
     targets: '.whiteband',
     easing: 'easeInExpo',
+    autoplay: false,
     width: "100%",
-    duration: 2200,
+    duration: 1200,
 })
 
 var textAnimation = anime({
     targets: '.anim-text',
     easing: 'easeInOutExpo',
+    autoplay: false,
     opacity: [
         { value: 0, duration: 2000, delay: 0 },
         { value: 100, duration: 1000, delay: 100 }
@@ -92,14 +94,13 @@ window.addEventListener("scroll", function (e) {
 /*               functions              */
 /****************************************/
 
-
 async function playIndexAnimation() {
     while (!finishedLoading) {
         await new Promise(resolve => setTimeout(resolve, 200));
     }
+    whiteBandAnimation.play();
+    textAnimation.play();
     setTimeout(() => {
-        whiteBandAnimation.play();
-        textAnimation.play();
         saoulAnimation.restart();
-    }, 500);
+    }, 1200);
 }

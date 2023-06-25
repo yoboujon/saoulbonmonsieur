@@ -5,6 +5,8 @@
 var urlStr = window.location.toString().slice(0, window.location.toString().lastIndexOf(window.location.pathname) + 1);
 //Getting the dir name by gathering the pathname and substract it with the last '/'.
 var dirStr = window.location.pathname.substring(1, window.location.pathname.lastIndexOf('/'));
+//the head tag
+var headTag = document.getElementsByTagName("head")[0];
 //Global variable set to true when finished loading external html/css/js files
 var finishedLoading = false;
 
@@ -117,10 +119,14 @@ function popUpPlacement(className) {
 /****************************************/
 /*                 main                 */
 /****************************************/
-
+window.addEventListener('load', function () {
+    var body = document.getElementsByTagName("body")[0];
+    //loading elements
+    var loadingBackground = document.createElement("div");
+    loadingBackground.id = "loading-bg";
+    body.insertBefore(loadingBackground, body.firstChild);
+});
 //Loading the html,js and css of navbar and footer
-//During the loading process we need a loading status bar
-var headTag = document.getElementsByTagName("head")[0];
 window.addEventListener('load', function () {
     //instant loading
     loadJS("//code.iconify.design/1/1.0.6/iconify.min.js", headTag);
@@ -132,6 +138,7 @@ window.addEventListener('load', function () {
         load(urlStr + "components/footer.html", document.getElementsByTagName("Footer")[0], urlStr + "js/footer.js", headTag).then(() => {
             finishedLoading = true;
             popUpPlacement("black-bg");
+            document.getElementById("loading-bg").style.display = "none";
         });
     });
 })
