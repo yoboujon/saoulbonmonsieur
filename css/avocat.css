@@ -1,3 +1,39 @@
+@media screen and (min-width: 1000px) {
+    .block-defendu{
+        width: 100%;
+        height: auto;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: .25rem;
+        padding: 1rem 1rem;
+        display: flex;
+    }
+
+    .block-defendu img{
+        max-height: 8rem;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .block-defendu{
+    width: 100%;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: .25rem;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.block-defendu img{
+    max-height: 7rem;
+    margin-bottom: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+}
+
 .avocat {
     overflow: hidden;
     width: 100%;
@@ -19,53 +55,19 @@
     top: 40%;
 }
 
-@media screen and (min-width: 1000px) {
-    .block {
-        padding: 2rem 2rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .parcours img {
-        max-width: 30rem;
-        margin: 2rem 2rem;
-        height: auto;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    }
-
-    .source {
-        display: flex;
-        float: right;
-        margin: 0 2rem;
-    }
+.block-defendu-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@media screen and (max-width: 1000px) {
-    .block {
-        padding: 2rem 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .parcours img {
-        max-width: 25rem;
-        margin: 2rem 2rem;
-        height: auto;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    }
-
-    .source {
-        display: flex;
-        font-size: x-small;
-        float: center;
-        margin: 0 2rem;
-    }
+.block-defendu-txt {
+    flex: 5;
+    text-align: justify;
 }
 
-.parcours em {
-    color: var(--color-dark);
+.block-defendu-txt h2{
+    text-align: right;
+    margin-right: 0.5rem;
 }
