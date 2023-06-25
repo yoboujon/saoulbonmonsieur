@@ -5,24 +5,30 @@
 var urlStr = window.location.toString().slice(0, window.location.toString().lastIndexOf(window.location.pathname) + 1);
 //Getting the dir name by gathering the pathname and substract it with the last '/'.
 var dirStr = window.location.pathname.substring(1, window.location.pathname.lastIndexOf('/'));
+//Global variable set to true when finished loading external html/css/js files
+var finishedLoading = false;
 
 /****************************************/
 /*               functions              */
 /****************************************/
 
 function load(urlHTML, elementHTML, urlJS, elementJS) {
-    fetch(urlHTML).then(res => {
-        return res.text();
-    }).then(htmltext => {
-        return elementHTML.innerHTML = htmltext;
-    }).then(loadedHTML => {
-        loadJS(urlJS, elementJS);
-    })
-        .catch(
-            function (err) {
-                console.warn('Could not load ' + urlHTML + ': Add the correct tag ?', err);
-            }
-        );
+    const returnPromise = new Promise((resolve, reject) => {
+        fetch(urlHTML).then(res => {
+            return res.text();
+        }).then(htmltext => {
+            return elementHTML.innerHTML = htmltext;
+        }).then(loadedHTML => {
+            loadJS(urlJS, elementJS);
+            resolve(elementHTML);
+        })
+            .catch(
+                function (err) {
+                    reject('Could not load ' + urlHTML + ': Add the correct tag ?', err);
+                }
+            );
+    });
+    return returnPromise;
 }
 
 function loadHTML(url, element) {
@@ -116,14 +122,16 @@ function popUpPlacement(className) {
 //During the loading process we need a loading status bar
 var headTag = document.getElementsByTagName("head")[0];
 window.addEventListener('load', function () {
-    loadJS("//code.iconify.design/1/1.0.6/iconify.min.js", headTag)
+    //instant loading
+    loadJS("//code.iconify.design/1/1.0.6/iconify.min.js", headTag);
     loadCSS(urlStr + "css/base.css", headTag);
     loadCSS(urlStr + "css/navbar.css", headTag);
-    load(urlStr + "components/navbar.html", document.getElementsByTagName("Navbar")[0], urlStr + "js/navbar.js", headTag);
     loadCSS(urlStr + "css/footer.css", headTag);
-    load(urlStr + "components/footer.html", document.getElementsByTagName("Footer")[0], urlStr + "js/footer.js", headTag)
-    setTimeout(() => {
-        //Will change
-        popUpPlacement("black-bg");
-    }, 500);
+    //async loading
+    load(urlStr + "components/navbar.html", document.getElementsByTagName("Navbar")[0], urlStr + "js/navbar.js", headTag).then(() => {
+        load(urlStr + "components/footer.html", document.getElementsByTagName("Footer")[0], urlStr + "js/footer.js", headTag).then(() => {
+            finishedLoading = true;
+            popUpPlacement("black-bg");
+        });
+    });
 })

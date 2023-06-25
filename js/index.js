@@ -2,6 +2,7 @@
 /*           global variables           */
 /****************************************/
 
+//status if saoul has disappeared or not
 var saulDisappeared = 0;
 
 /****************************************/
@@ -19,6 +20,7 @@ var nomoreSaoul = anime({
 var saoulAnimation = anime({
     targets: '.photosaoul',
     easing: 'easeOutQuint',
+    autoplay: false,
     translateX: [
         { value: "", duration: 100, delay: 0 },
         { value: "130%", duration: 1000, delay: 100 }
@@ -55,15 +57,11 @@ var textAnimation = anime({
 /*                 main                 */
 /****************************************/
 
-saoulAnimation.reverse()
-ready(function () {
-    setTimeout(() => {
-        saoulAnimation.play();
-        whiteBandAnimation.play();
-        textAnimation.play();
-    }, 1000);
-});
+//playing the first animation on the page
+saoulAnimation.reverse();
+playIndexAnimation();
 
+//eventlistener to make saoul dissapear when scrolling at a certain point
 window.addEventListener("scroll", function (e) {
     var saoulPhoto = document.getElementsByClassName("photosaoul")[0];
     if (document.getElementsByClassName("description")[0].getBoundingClientRect().y < 150) {
@@ -94,6 +92,14 @@ window.addEventListener("scroll", function (e) {
 /*               functions              */
 /****************************************/
 
-function superAnim() {
-    saoulAnimation.play()
+
+async function playIndexAnimation() {
+    while (!finishedLoading) {
+        await new Promise(resolve => setTimeout(resolve, 200));
+    }
+    setTimeout(() => {
+        whiteBandAnimation.play();
+        textAnimation.play();
+        saoulAnimation.restart();
+    }, 500);
 }

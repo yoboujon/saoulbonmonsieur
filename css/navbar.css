@@ -2,14 +2,6 @@
     padding: 2.5rem;
 }
 
-#navbar_logo-container {
-    height: 5rem;
-    width: 5rem;
-    display: flex;
-    position: fixed;
-    right: 5rem;
-}
-
 .navbar_logo {
     height: 5rem;
 }
@@ -26,6 +18,14 @@
         background-color: var(--color-light);
         z-index: 3;
         overflow: initial;
+    }
+
+    #navbar_logo-container {
+        height: 5rem;
+        width: 5rem;
+        display: flex;
+        position: fixed;
+        right: 5rem;
     }
 
     #navbar_text-container {
@@ -79,6 +79,14 @@
         background-color: var(--color-light);
         z-index: 11;
         overflow: initial;
+    }
+
+    #navbar_logo-container {
+        height: 5rem;
+        width: 5rem;
+        display: flex;
+        position: fixed;
+        right: 2.5rem;
     }
 
     #navbar_text-container {
