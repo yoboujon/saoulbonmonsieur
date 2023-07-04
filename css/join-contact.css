@@ -1,0 +1,16 @@
+@media screen and (min-width: 1000px) {
+    .page-header_img img {
+        width: auto;
+        height: 100%;
+        float: right;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .page-header_img img {
+        width: auto;
+        height: 70%;
+        margin-top: 9rem;
+        float: right;
+    }
+}

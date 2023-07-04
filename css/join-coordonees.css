@@ -1,0 +1,33 @@
+@media screen and (min-width: 1000px) {
+    .page-header_img img {
+        width: auto;
+        height: 100%;
+        float: right;
+    }
+
+    .page-header {
+        background-position-y: 70%;
+    }
+
+    .page-header_text {
+        color: var(--color-white);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .page-header_img img {
+        width: auto;
+        height: 50%;
+        margin-top: 15rem;
+        float: right;
+    }
+
+    .page-header {
+        background-position-y: 50%;
+    }
+
+    .page-header_text {
+        color: var(--color-dark);
+    }
+}
+

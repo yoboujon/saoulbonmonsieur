@@ -114,9 +114,10 @@
 
 .legal-text {
     overflow-y: scroll;
-    margin: 2rem;
+    padding: 2rem 2rem;
     height: inherit;
     font-size: small;
+    margin: 0 1rem;
 }
 
 .legal-close-container
