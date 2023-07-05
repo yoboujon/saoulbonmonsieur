@@ -1,2 +1,4 @@
-robots.txt
-sitemap.xml
+client/robots.txt
+client/sitemap.xml
+server/node_modules
+.obsidian
